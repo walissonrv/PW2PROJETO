@@ -1,0 +1,17 @@
+{
+    "name": "renato/public_html",
+    "type": "project",
+    "authors": [
+        {
+            "name": "renatoabreu14",
+            "email": "renato.abreu.info@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "App\\Controllers\\": "src/App/controllers",
+            "App\\Models\\": "src/App/models"
+        }
+    }
+}
