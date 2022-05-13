@@ -12,7 +12,7 @@ public  static function getInstance(){
         //$dns = mysql:host=localhost;dbname=delivery_2022
         $dns = DRIVER. ':host=' .HOST. ';dbname='.DBNAME;
         self::$instance = new \PDO($dns, USERNAME,  PASSWORD);
-        self::$instance->setAttribute(PDO::ATTR_ERRMODE,  PDO::ERRMODE_ECEPTION);
+        self::$instance->setAttribute(\PDO::ATTR_ERRMODE,  \PDO::ERRMODE_EXCEPTION);
     }
     return self::$instance;
 }
