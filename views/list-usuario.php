@@ -1,4 +1,3 @@
-
 <?php
 require_once __DIR__ . "/../vendor/autoload.php";
 
@@ -32,33 +31,32 @@ use App\Controllers\UsuarioController;
 <div class="container">
     <div class="row">
         <?php
-        $listaUsuario = UsuarioController::getInstance()->listar();
+        $listaUsuarios = UsuarioController::getInstance()->listar();
         ?>
-    <table class="table table-hover">
-    <thead>
-        <tr>
-            <th></th>
-            <th></th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php
-        foreach ($listaUsuario as $usuario){
-            echo"<tr>
-                    <td>$usuario</td>
-                    <td></td>
-                    <td></td>
-                </tr>
-        }
-        ?>
-       
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>-</th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php
+            foreach ($listaUsuarios as $usuario){
+                echo "<tr>
+                                <td>".$usuario->getNome()."</td>
+                                <td>".$usuario->getEmail()."</td>
+                                <td></td>
+                              </tr>";
+            }
+            ?>
 
-    </tbody>
-    </table>
-</div>
+
+            </tbody>
+        </table>
     </div>
-
+</div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </body>
