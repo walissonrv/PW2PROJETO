@@ -41,7 +41,8 @@ use App\Controllers\UsuarioController;
             $usuario->setNome($_POST['nome']);
             $usuario->setTelefone($_POST['telefone']);
             $usuario->setEmail($_POST['email']);
-            $usuario->setSenha($_POST['senha']);
+            $usuario->setSenha(md5($_POST['senha']));
+
 
             if (UsuarioController::getInstance()->inserir($usuario)){
                 $sucesso = true;
