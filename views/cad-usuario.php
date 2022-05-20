@@ -18,30 +18,27 @@ use App\Controllers\UsuarioController;
     <title>Document</title>
 </head>
 <body>
-<nav>
-    <div class="nav-wrapper cyan">
-        <a href="#" class="brand-logo">Cadastro de Cliente</a>
-        <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><a href="#">Cadastro de Cliente</a></li>
-            <li><a href="#">Cadastro de Produto</a></li>
-            <li><a href="#">Vendas</a></li>
-        </ul>
-    </div>
-</nav>
+<?php
+include_once "menu.php";
+?>
 <div class="container">
+    <div class="row">
+        <h4>Cadastro de Usuários</h4>
+    </div>
     <div class="row">
 
         <?php
         //singleton
         //insert into cliente (nome, telefone, email, endereco) values ('renato', '64992481630', 'renato.abreu@ifg.edu.br', 'Rua x Ny')
         $sucesso = false;
-        if (isset($_POST['enviar'])){
+        if (isset($_POST['enviar'])){ //envia para o banco de dados
 
             $usuario = new Usuario();
             $usuario->setNome($_POST['nome']);
             $usuario->setTelefone($_POST['telefone']);
             $usuario->setEmail($_POST['email']);
             $usuario->setSenha(md5($_POST['senha']));
+
 
 
             if (UsuarioController::getInstance()->inserir($usuario)){
@@ -85,10 +82,10 @@ use App\Controllers\UsuarioController;
             </div>
             <div class="row">
                 <div class="col col-6">
-                    <a href="#" class="btn waves-effect waves-light red"><i class="material-icons left">cancel</i>Cancelar</a>
+                    <a href="list-usuario.php" class="btn waves-effect waves-light red"><i class="material-icons left">cancel</i>Cancelar</a>
                 </div>
                 <div class="col col-6">
-                    <button class="btn waves-effect waves-light" type="submit" name="enviar">Enviar
+                    <button class="btn waves-effect waves-light" type="submit" name="enviar" <a href="#"</a>Enviar
                         <i class="material-icons right">send</i>
                     </button>
                 </div>

@@ -18,22 +18,22 @@ use App\Controllers\UsuarioController;
     <title>Document</title>
 </head>
 <body>
-<nav>
-    <div class="nav-wrapper cyan">
-        <a href="#" class="brand-logo">Cadastro de Cliente</a>
-        <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><a href="#">Cadastro de Cliente</a></li>
-            <li><a href="#">Cadastro de Produto</a></li>
-            <li><a href="#">Vendas</a></li>
-        </ul>
-    </div>
-</nav>
+<?php
+include_once "menu.php";
+?>
 <div class="container">
     <div class="row">
+        <h4>Lista de Usuários</h4>
+    </div>
+    <div class="row">
+        <div class="col-2">
+            <a href="cad-usuario.php" class="btn waves-effect waves-light"  role="button  ">Novo Usuario</a>
+        </div>
         <?php
         $listaUsuarios = UsuarioController::getInstance()->listar();
         ?>
         <table class="table table-hover">
+
             <thead>
             <tr>
                 <th>Nome</th>
