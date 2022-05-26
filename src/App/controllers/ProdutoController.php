@@ -1,7 +1,7 @@
 <?php
 namespace App\Controllers;
 
-use App\Models\Usuario;
+use App\Models\Produto;
 use App\Controllers\Conexao;
 
 class ProdutoController
@@ -20,14 +20,14 @@ class ProdutoController
         $this->conexao=  conexao ::getInstance();
     }
 
-    public function inserir(\Produto $produto){
-        $sql = "INSERT INTO usuario (nome, descricao, valor, imagem) 
-                VALUES(:nome, :telefone, :email, :senha)";
+    public function inserir(Produto $produto){
+        $sql = "INSERT INTO Produto (nome, descricao, valor, imagem) 
+                VALUES(:nome, :descricao, :valor, :imagem)";
         $statement=$this->conexao->prepare($sql);
-        $statement->bindValue("nome",$usuario->getNome());
-        $statement->bindValue("telefone",$usuario->getTelefone());
-        $statement->bindValue("email",$usuario->getEmail());
-        $statement->bindValue("senha",$usuario->getSenha());
+        $statement->bindValue("nome",$produto->getNome());
+        $statement->bindValue("descricao",$produto->getdescricao());
+        $statement->bindValue("valor",$produto->getvalor());
+        $statement->bindValue("imagem",$produto->getimagem());
 
 
 
@@ -35,22 +35,23 @@ class ProdutoController
     }
 
     public function listar(){
-        $sql = "SELECT id, nome, email, telefone FROM usuario ORDER BY nome";
+        $sql = "SELECT id, nome, descricao, valor, imagem FROM Produto ORDER BY nome";
         $statemet = $this->conexao->query($sql, \PDO::FETCH_ASSOC);
         $lstretorno =array();
         foreach ($statemet as $row){
-            $lstretorno[]=$this->preencherUsuario($row);
+            $lstretorno[]=$this->preencherProduto($row);
         }
         return $lstretorno;
 
     }
-    public function preencherUsuario($row){
-        $usuario= new Usuario();
-        $usuario->setId($row["id"]);
-        $usuario->setNome($row["nome"]);
-        $usuario->setEmail($row["email"]);
-        $usuario->setTelefone($row["telefone"]);
-        return $usuario;
+    public function preencherProduto($row){
+        $produto= new Produto();
+        $produto->setId($row["id"]);
+        $produto->setNome($row["nome"]);
+        $produto->setDescricao($row["descricao"]);
+        $produto->setValor($row["valor"]);
+        $produto->setImagem($row["imagem"]);
+        return $produto;
     }
 
 }
