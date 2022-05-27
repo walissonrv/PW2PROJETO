@@ -37,7 +37,15 @@ include_once "menu.php";
             $produto->setNome($_POST['nome']);
             $produto->setDescricao($_POST['descricao']);
             $produto->setValor($_POST['valor']);
-            $produto->setImagem($_POST['imagem']);
+
+            if (isset($_FILES['imagem'])) {
+                $ext = strtolower(substr($_FILES['imagem']['name'], -4)); //Pegando extensão do arquivo
+                $new_name = date("Y.m.d-H.i.s") . $ext; //Definindo um novo nome para o arquivo
+                $dir = './imagens/produtos/'; //Diretório para uploads
+                move_uploaded_file($_FILES['imagem']['tmp_name'], $dir . $new_name); //Fazer upload do arquivo
+                $produto->setImagem($new_name);
+            }
+
 
 
 
@@ -52,8 +60,11 @@ include_once "menu.php";
             </div>
             <?php
         }
+
+
+
         ?>
-        <form action="#" method="post" class="col s6 ">
+        <form action="#" method="post" class="col s6 " enctype="multipart/form-data">
             <div class="row">
                 <div class="input-field col s6">
                     <i class="material-icons prefix">add_box</i>
@@ -77,9 +88,15 @@ include_once "menu.php";
             </div>
             <div class="row">
                 <div class="input-field col s12">
-                        <i class="material-icons prefix">image</i>
-                        <input id="icon_prefix" type="text" class="validate" name="imagem"required>
-                        <label for="icon_prefix">Imagem</label>
+                    <div class="file-field input-field">
+                        <div class="btn black">
+                            <span>Imagem</span>
+                            <input type="file" name="imagem">
+                        </div>
+                        <div class="file-path-wrapper">
+                            <input class="file-path validate" type="text">
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="row">
