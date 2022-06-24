@@ -68,7 +68,13 @@ include_once "menu.php";
                                 <td>".$produto->getValor()."</td>
                                 <td><a href='list.produto.php?excluir=true&produto_id=".$produto->getId()."' class='waves-effect waves-light btn red' alt='Excluir'title='Excluir'><span class='material-icons'>
 delete
+ <a href='cad-produto.php?alterar=true&produto_id=".$produto->getId()."' class='waves-effect waves-light btn yellow' 
+                            alt='Alterar' title='Alterar'>
+                                <span class='material-icons'>edit</span>
+                            </a>
 </span></a></td>
+
+
                               </tr>";
             }
             ?>

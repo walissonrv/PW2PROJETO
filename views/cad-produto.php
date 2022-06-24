@@ -3,6 +3,12 @@ require_once __DIR__ . "/../vendor/autoload.php";
 
 use App\Models\Produto;
 use App\Controllers\ProdutoController;
+$produto = new Produto();
+//se enviou algo no $_GET['alterar'] então a variável $produto recebe a execuçao do método bucarProduto($_GET['produto_id']) da classe ProdutoController
+if (isset($_GET['alterar'])){
+    $protudo=ProdutoController::getInstance()->buscarProduto($_GET('produto_id'));
+
+}
 ?>
 <!doctype html>
 <html lang="en">
@@ -33,7 +39,7 @@ include_once "menu.php";
         $sucesso = false;
         if (isset($_POST['enviar'])){ //envia para o banco de dados
 
-            $produto = new Produto();
+
             $produto->setNome($_POST['nome']);
             $produto->setDescricao($_POST['descricao']);
             $produto->setValor($_POST['valor']);
@@ -65,10 +71,11 @@ include_once "menu.php";
 
         ?>
         <form action="#" method="post" class="col s6 " enctype="multipart/form-data">
+            <input type="hidden" name="id" value="<?php echo $produto->getId();?>">
             <div class="row">
-                <div class="input-field col s6">
-                    <i class="material-icons prefix">add_box</i>
-                    <input id="icon_prefix" type="text" class="validate" name="nome"required>
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">account_circle</i>
+                    <input id="icon_prefix" type="text" class="validate" name="nome"required value="<?php echo $produto->getNome();?>">
                     <label for="icon_prefix">Nome</label>
                 </div>
             </div>
