@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . "/../vendor/autoload.php";
+//require_once 'verifica-sessao.php';
 
 use App\Models\Usuario;
 use App\Controllers\UsuarioController;
@@ -28,10 +29,9 @@ include_once "menu.php";
     <div class="row">
 
         <?php
-        //singleton
-        //insert into cliente (nome, telefone, email, endereco) values ('renato', '64992481630', 'renato.abreu@ifg.edu.br', 'Rua x Ny')
+
         $sucesso = false;
-        if (isset($_POST['enviar'])){ //envia para o banco de dados
+        if (isset($_POST['enviar'])){
 
             $usuario = new Usuario();
             $usuario->setNome($_POST['nome']);
@@ -40,43 +40,43 @@ include_once "menu.php";
             $usuario->setSenha(md5($_POST['senha']));
 
 
-
             if (UsuarioController::getInstance()->inserir($usuario)){
                 $sucesso = true;
             }
         }
-        if($sucesso){
-        ?>
-        <div class="alert alert-primary" role="alert">
-            Usuario inserido com sucesso!
-        </div>
-        <?php
+
+        if ($sucesso) {
+            ?>
+            <div class="alert alert-primary" role="alert">
+                Usuário inserido com sucesso!
+            </div>
+            <?php
         }
         ?>
         <form action="#" method="post" class="col s6 ">
             <div class="row">
                 <div class="input-field col s6">
                     <i class="material-icons prefix">account_circle</i>
-                    <input id="icon_prefix" type="text" class="validate" name="nome"required>
+                    <input id="icon_prefix" type="text" class="validate" name="nome" required>
                     <label for="icon_prefix">Nome</label>
                 </div>
                 <div class="input-field col s6">
                     <i class="material-icons prefix">phone</i>
-                    <input id="icon_prefix" type="text" class="validate" name="telefone"required>
+                    <input id="icon_prefix" type="text" class="validate" name="telefone" required>
                     <label for="icon_prefix">Telefone</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s12">
                     <i class="material-icons prefix">email</i>
-                    <input id="icon_prefix" type="email" class="validate" name="email"required>
+                    <input id="icon_prefix" type="email" class="validate" name="email" required>
                     <label for="icon_prefix">Email</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s12">
                     <i class="material-icons prefix">lock</i>
-                    <input id="senha" type="password" class="validate" name="senha"required>
+                    <input id="senha" type="password" class="validate" name="senha" required>
                     <label for="senha">Senha</label>
                 </div>
             </div>
@@ -85,7 +85,7 @@ include_once "menu.php";
                     <a href="list-usuario.php" class="btn waves-effect waves-light red"><i class="material-icons left">cancel</i>Cancelar</a>
                 </div>
                 <div class="col col-6">
-                    <button class="btn waves-effect waves-light" type="submit" name="enviar" <a href="#"</a>Enviar
+                    <button class="btn waves-effect waves-light" type="submit" name="enviar">Enviar
                         <i class="material-icons right">send</i>
                     </button>
                 </div>

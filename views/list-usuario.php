@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . "/../vendor/autoload.php";
+//require_once 'verifica-sessao.php';
 
 use App\Models\Usuario;
 use App\Controllers\UsuarioController;
@@ -27,13 +28,17 @@ include_once "menu.php";
     </div>
     <div class="row">
         <div class="col-2">
-            <a href="cad-usuario.php" class="btn waves-effect waves-light"  role="button  ">Novo Usuario</a>
+            <a href="cad-usuario.php" class="btn-floating btn-large waves-effect waves-light">
+                <i class="material-icons">add</i>
+            </a>
         </div>
+    </div>
+    <div class="row">
         <?php
         $listaUsuarios = UsuarioController::getInstance()->listar();
         ?>
-        <table class="table table-hover">
 
+        <table class="table table-hover">
             <thead>
             <tr>
                 <th>Nome</th>
