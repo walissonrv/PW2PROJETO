@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__ . "/../vendor/autoload.php";
-//require_once 'verifica-sessao.php';
+require_once 'verifica-sessao.php';
 
 use App\Models\Usuario;
 use App\Controllers\UsuarioController;

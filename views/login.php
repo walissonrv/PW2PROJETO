@@ -9,7 +9,7 @@ if (isset($_POST['enviar'])){
     $usuario->setSenha(md5($_POST['senha']));
     $usuario_login = UsuarioController::getInstance()->login($usuario);
     if ($usuario_login->getId() != 0){
-        $_SESSION['login-usuario'] = $usuario_login;
+        $_SESSION['login'] = $usuario_login;
         header('Location: list-usuario.php');
     }
 }
