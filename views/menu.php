@@ -6,6 +6,7 @@
             <li><a href="cad-produto.php">Cadastro de Produto</a></li>
             <li><a href="list-produto.php">Lista de Produtos</a></li>
             <li><a href="list-categoria.php">Cadastro de Categorias</a></li>
+            <li><a href="./vitrine/index.php">Vitrine</a></li>
 
         </ul>
     </div>

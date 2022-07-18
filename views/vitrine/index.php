@@ -34,7 +34,8 @@ if (isset($_GET['categoria_id'])){
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="index.php">Home</a>
+                            <a class="nav-link active" aria-current="page" href="../vitrine/index.php">Home</a>
+                            <a class="nav-link active" aria-current="page" href="../list-produto.php">Voltar</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -62,7 +63,7 @@ if (isset($_GET['categoria_id'])){
             }
             foreach ($listaProdutos as $produto){
                 echo "<div class=\"card item-menu\" style=\"width: 18rem;\">
-                <img src=\"../admin/imagens/produtos/".$produto->getImagem()."\" class=\"card-img-top\" alt=\"...\">
+                <img src=\"../imagens/produtos/".$produto->getImagem()."\" class=\"card-img-top\" alt=\"...\">
                 <div class=\"card-body\">
                     <h5 class=\"card-title\">".$produto->getNome()."</h5>
                     <p class=\"card-text\">R$ ".number_format($produto->getValor(), 2, ",", ".")."</p>
